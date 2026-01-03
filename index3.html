@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolling dice</title>
+    <style>
+        #rollingdice{
+            font-size: 320px;
+        }
+        #rollingdice:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin-left: 150px;">Rolling dice</h1>
+    <div id="rollingdice" style="margin-left: 150px;" onclick="startstop()"> 
+    </div>
+    <script>
+        var dice;
+        var number;
+        var dices=['&#9856;', '&#9857;', '&#9858;', '&#9859;', '&#9860;', '&#9861;']
+        var stopped=true;
+        var t;
+        function randomNumber(){
+            var number=Math.floor(Math.random()*6)
+            document.getElementById("rollingdice").innerHTML=dices[number]
+        }
+
+        function startstop(){
+            if(stopped){
+            stopped=false
+            t=setInterval(randomNumber,100)
+        }
+            else{
+            clearInterval()
+            stopped=true
+            }
+    }
+        window.onload=function(){
+        dice=document.getElementById("rollingdice")
+        startstop()
+        }
+    </script>
+</body>
+</html>
